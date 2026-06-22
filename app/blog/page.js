@@ -1,44 +1,35 @@
-// @flow strict
-
 import { personalData } from "@/utils/data/personal-data";
-import BlogCard from "../components/homepage/blog/blog-card";
+import Link from "next/link";
+import { BsGithub } from "react-icons/bs";
 
-async function getBlogs() {
-  const res = await fetch(`https://dev.to/api/articles?username=${personalData.devUsername}`)
-
-  if (!res.ok) {
-    throw new Error('Failed to fetch data')
-  }
-
-  const data = await res.json();
-  return data;
+export const metadata = {
+  title: "Notes | Affan Ahmed",
+  description: "Future writing and project notes from Affan Ahmed.",
 };
 
-async function page() {
-  const blogs = await getBlogs();
-
+export default function BlogPage() {
   return (
-    <div className="py-8">
-      <div className="flex justify-center my-5 lg:py-8">
-        <div className="flex  items-center">
-          <span className="w-24 h-[2px] bg-[#1a1443]"></span>
-          <span className="bg-[#1a1443] w-fit text-white p-2 px-5 text-2xl rounded-md">
-            All Blog
-          </span>
-          <span className="w-24 h-[2px] bg-[#1a1443]"></span>
-        </div>
-      </div>
+    <section className="py-16 lg:py-24">
+      <div className="max-w-3xl">
+        <p className="text-sm font-semibold uppercase tracking-[0.24em] text-[#d98f45]">
+          Notes
+        </p>
+        <h1 className="mt-3 text-4xl font-bold text-[#f7f3ea] sm:text-5xl">
+          Writing space coming soon.
+        </h1>
+        <p className="mt-5 text-lg leading-8 text-[#b8b0a2]">
+          I am keeping this page ready for technical notes, project breakdowns, and lessons from full-stack and cloud work. For now, my active work is easiest to follow on GitHub.
+        </p>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 md:gap-5 lg:gap-8 xl:gap-10">
-        {
-          blogs.map((blog, i) => (
-            blog?.cover_image &&
-            <BlogCard blog={blog} key={i} priority={i < 3} />
-          ))
-        }
+        <Link
+          href={personalData.github}
+          target="_blank"
+          className="mt-8 inline-flex items-center gap-2 rounded-md bg-[#32d6b3] px-5 py-3 font-semibold text-[#10100f] transition-transform hover:-translate-y-0.5"
+        >
+          <BsGithub size={20} />
+          View GitHub
+        </Link>
       </div>
-    </div>
+    </section>
   );
-};
-
-export default page;
+}

@@ -1,40 +1,62 @@
 // @flow strict
 
 import { personalData } from "@/utils/data/personal-data";
-import Image from "next/image";
+import { FiBookOpen, FiCloud, FiCode } from "react-icons/fi";
 
+const strengths = [
+  {
+    icon: FiCode,
+    title: "Product-minded development",
+    text: "I focus on clear interfaces, practical user flows, and systems that solve real operating problems.",
+  },
+  {
+    icon: FiCloud,
+    title: "Cloud deployment practice",
+    text: "My projects include AWS ECS, EC2, RDS, S3, Docker, Terraform, monitoring, and CI/CD workflows.",
+  },
+  {
+    icon: FiBookOpen,
+    title: "Teaching while learning",
+    text: "As a web development instructor, I explain concepts clearly and keep fundamentals sharp through practice.",
+  },
+];
 
 function AboutSection() {
   return (
-    <div id="about" className="my-12 lg:my-16 relative">
-      <div className="hidden lg:flex flex-col items-center absolute top-16 -right-8">
-        <span className="bg-[#1a1443] w-fit text-white rotate-90 p-2 px-5 text-xl rounded-md">
-          ABOUT ME
-        </span>
-        <span className="h-36 w-[2px] bg-[#1a1443]"></span>
-      </div>
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
-        <div className="order-2 lg:order-1">
-          <p className="font-medium mb-5 text-[#16f2b3] text-xl uppercase">
-            Who I am?
+    <section id="about" className="scroll-mt-24 border-t border-[#f7f3ea1a] py-16 lg:py-24">
+      <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
+        <div>
+          <p className="text-sm font-semibold uppercase tracking-[0.24em] text-[#d98f45]">
+            About
           </p>
-          <p className="text-gray-200 text-sm lg:text-lg">
-            {personalData.description}
-          </p>
+          <h2 className="mt-3 text-3xl font-bold text-[#f7f3ea] sm:text-4xl">
+            Building useful web products from strong fundamentals.
+          </h2>
         </div>
-        <div className="flex justify-center order-1 lg:order-2">
-          <Image
-            src={personalData.profile}
-            width={280}
-            height={280}
-            alt="Abu Said"
-            className="rounded-lg transition-all duration-1000 grayscale hover:grayscale-0 hover:scale-110 cursor-pointer"
-            style={{ width: 'auto', height: 'auto' }}
-          />
+
+        <div>
+          <p className="text-lg leading-9 text-[#d8d0c2]">{personalData.description}</p>
+
+          <div className="mt-8 grid gap-4 md:grid-cols-3">
+            {strengths.map((item) => {
+              const Icon = item.icon;
+
+              return (
+                <div
+                  key={item.title}
+                  className="rounded-md border border-[#f7f3ea1f] bg-[#1a1815cc] p-5"
+                >
+                  <Icon className="text-[#32d6b3]" size={24} />
+                  <h3 className="mt-4 text-base font-semibold text-[#f7f3ea]">{item.title}</h3>
+                  <p className="mt-3 text-sm leading-6 text-[#b8b0a2]">{item.text}</p>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
-    </div>
+    </section>
   );
-};
+}
 
 export default AboutSection;

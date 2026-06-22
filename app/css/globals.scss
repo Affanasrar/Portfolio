@@ -1,37 +1,37 @@
 @use "tailwindcss";
 
 :root {
-  --foreground-rgb: rgb(211, 216, 232);
+  --background: #11100e;
+  --surface: #1a1815;
+  --surface-soft: #24211d;
+  --line: rgba(247, 243, 234, 0.14);
+  --foreground-rgb: 247, 243, 234;
+  --muted: #b8b0a2;
+  --teal: #32d6b3;
+  --copper: #d98f45;
+  --berry: #c75d79;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   color: rgb(var(--foreground-rgb));
-  background-color: #0d1224;
+  background:
+    linear-gradient(90deg, rgba(247, 243, 234, 0.035) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(247, 243, 234, 0.03) 1px, transparent 1px),
+    linear-gradient(135deg, rgba(50, 214, 179, 0.08), transparent 34%, rgba(217, 143, 69, 0.08)),
+    var(--background);
+  background-size: 42px 42px, 42px 42px, auto, auto;
 }
 
-#sticky-card-1 {
-  --index: 1;
+::selection {
+  background: rgba(50, 214, 179, 0.35);
+  color: #fffaf1;
 }
 
-#sticky-card-2 {
-  --index: 2;
-}
-
-#sticky-card-3 {
-  --index: 3;
-}
-
-#sticky-card-4 {
-  --index: 4;
-}
-
-.sticky-card {
-  // padding-top: calc(var(--index) * 2.5rem);
-  top: calc(var(--index) * 4rem);
+a,
+button {
+  outline-color: var(--teal);
 }

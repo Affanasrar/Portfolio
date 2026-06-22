@@ -1,71 +1,55 @@
 // @flow strict
 
-import * as React from 'react';
+import Link from "next/link";
+import { BsGithub } from "react-icons/bs";
+import { FiExternalLink } from "react-icons/fi";
 
 function ProjectCard({ project }) {
-
   return (
-    <div className="from-[#0d1224] border-[#1b2c68a0] relative rounded-lg border bg-gradient-to-r to-[#0a0d37] w-full">
-      <div className="flex flex-row">
-        <div className="h-[1px] w-full bg-gradient-to-r from-transparent via-pink-500 to-violet-600"></div>
-        <div className="h-[1px] w-full bg-gradient-to-r from-violet-600 to-transparent"></div>
-      </div>
-      <div className="px-4 lg:px-8 py-3 lg:py-5 relative">
-        <div className="flex flex-row space-x-1 lg:space-x-2 absolute top-1/2 -translate-y-1/2">
-          <div className="h-2 w-2 lg:h-3 lg:w-3 rounded-full bg-red-400"></div>
-          <div className="h-2 w-2 lg:h-3 lg:w-3 rounded-full bg-orange-400"></div>
-          <div className="h-2 w-2 lg:h-3 lg:w-3 rounded-full bg-green-200"></div>
+    <article className="flex h-full flex-col rounded-md border border-[#f7f3ea1f] bg-[#1a1815cc] p-6 transition-colors hover:border-[#32d6b366]">
+      <div className="flex flex-wrap items-start justify-between gap-3">
+        <div>
+          <p className="text-sm font-semibold text-[#d98f45]">{project.role}</p>
+          <h3 className="mt-2 text-2xl font-bold text-[#f7f3ea]">{project.name}</h3>
         </div>
-        <p className="text-center ml-3 text-[#16f2b3] text-base lg:text-xl">
-          {project.name}
-        </p>
-      </div>
-      <div className="overflow-hidden border-t-[2px] border-indigo-900 px-4 lg:px-8 py-4 lg:py-8">
-        <code className="font-mono text-xs md:text-sm lg:text-base">
-          <div className="blink">
-            <span className="mr-2 text-pink-500">const</span>
-            <span className="mr-2 text-white">project</span>
-            <span className="mr-2 text-pink-500">=</span>
-            <span className="text-gray-400">{'{'}</span>
-          </div>
-          <div>
-            <span className="ml-4 lg:ml-8 mr-2 text-white">name:</span>
-            <span className="text-gray-400">{`'`}</span>
-            <span className="text-amber-300">{project.name}</span>
-            <span className="text-gray-400">{`',`}</span>
-          </div>
 
-          <div className="ml-4 lg:ml-8 mr-2">
-            <span className=" text-white">tools:</span>
-            <span className="text-gray-400">{` ['`}</span>
-            {
-              project.tools.map((tag, i) => (
-                <React.Fragment key={i}>
-                  <span className="text-amber-300">{tag}</span>
-                  {
-                    project.tools?.length - 1 !== i &&
-                    <span className="text-gray-400">{`', '`}</span>
-                  }
-                </React.Fragment>
-              ))
-            }
-            <span className="text-gray-400">{"],"}</span>
-          </div>
-          <div>
-            <span className="ml-4 lg:ml-8 mr-2 text-white">myRole:</span>
-            <span className="text-orange-400">{project.role}</span>
-            <span className="text-gray-400">,</span>
-          </div>
-          <div className="ml-4 lg:ml-8 mr-2">
-            <span className="text-white">Description:</span>
-            <span className="text-cyan-400">{' ' + project.description}</span>
-            <span className="text-gray-400">,</span>
-          </div>
-          <div><span className="text-gray-400">{`};`}</span></div>
-        </code>
+        {project.code && (
+          <Link
+            href={project.code}
+            target="_blank"
+            aria-label={`${project.name} source code`}
+            className="rounded-md border border-[#f7f3ea1f] bg-[#11100f] p-3 text-[#f7f3ea] transition-colors hover:border-[#32d6b3] hover:text-[#32d6b3]"
+          >
+            <BsGithub size={20} />
+          </Link>
+        )}
       </div>
-    </div>
+
+      <p className="mt-5 flex-1 text-sm leading-7 text-[#b8b0a2]">{project.description}</p>
+
+      <div className="mt-5 flex flex-wrap gap-2">
+        {project.tools.map((tool) => (
+          <span
+            key={tool}
+            className="rounded-md border border-[#f7f3ea1a] bg-[#11100f] px-3 py-1.5 text-xs font-medium text-[#d8d0c2]"
+          >
+            {tool}
+          </span>
+        ))}
+      </div>
+
+      {project.demo && (
+        <Link
+          href={project.demo}
+          target="_blank"
+          className="mt-6 inline-flex w-fit items-center gap-2 rounded-md bg-[#32d6b3] px-4 py-2 text-sm font-semibold text-[#10100f] transition-transform hover:-translate-y-0.5"
+        >
+          Live Demo
+          <FiExternalLink size={16} />
+        </Link>
+      )}
+    </article>
   );
-};
+}
 
 export default ProjectCard;

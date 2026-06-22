@@ -1,89 +1,111 @@
 // @flow strict
-import { personalData } from '@/utils/data/personal-data';
-import Link from 'next/link';
+import { personalData } from "@/utils/data/personal-data";
+import Link from "next/link";
 import { BiLogoLinkedin } from "react-icons/bi";
-import { CiLocationOn } from "react-icons/ci";
-import { FaFacebook, FaStackOverflow } from 'react-icons/fa';
+import { FaInstagram } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
-import { IoLogoGithub, IoMdCall } from "react-icons/io";
+import { FiMapPin, FiPhone } from "react-icons/fi";
+import { IoLogoGithub } from "react-icons/io";
 import { MdAlternateEmail } from "react-icons/md";
-import ContactForm from './contact-form';
+import ContactForm from "./contact-form";
+
+const contactLinks = [
+  {
+    label: "Email",
+    value: personalData.email,
+    href: `mailto:${personalData.email}`,
+    icon: MdAlternateEmail,
+  },
+  {
+    label: "Phone",
+    value: personalData.phone,
+    href: `tel:${personalData.phoneHref}`,
+    icon: FiPhone,
+  },
+  {
+    label: "Location",
+    value: personalData.address,
+    href: "https://maps.google.com/?q=Karachi%2C%20Pakistan",
+    icon: FiMapPin,
+  },
+];
+
+const socials = [
+  { href: personalData.github, label: "GitHub", icon: IoLogoGithub },
+  { href: personalData.linkedIn, label: "LinkedIn", icon: BiLogoLinkedin },
+  { href: personalData.twitter, label: "X", icon: FaXTwitter },
+  { href: personalData.instagram, label: "Instagram", icon: FaInstagram },
+];
 
 function ContactSection() {
   return (
-    <div id="contact" className="my-12 lg:my-16 relative mt-24 text-white">
-      <div className="hidden lg:flex flex-col items-center absolute top-24 -right-8">
-        <span className="bg-[#1a1443] w-fit text-white rotate-90 p-2 px-5 text-xl rounded-md">
-          CONTACT
-        </span>
-        <span className="h-36 w-[2px] bg-[#1a1443]"></span>
+    <section id="contact" className="scroll-mt-24 border-t border-[#f7f3ea1a] py-16 lg:py-24">
+      <div className="mb-10 max-w-3xl">
+        <p className="text-sm font-semibold uppercase tracking-[0.24em] text-[#d98f45]">
+          Contact
+        </p>
+        <h2 className="mt-3 text-3xl font-bold text-[#f7f3ea] sm:text-4xl">
+          Let&apos;s build something useful.
+        </h2>
       </div>
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
-        <ContactForm />
-        <div className="lg:w-3/4 ">
-          <div className="flex flex-col gap-5 lg:gap-9">
-            <p className="text-sm md:text-xl flex items-center gap-3">
-              <MdAlternateEmail
-                className="bg-[#8b98a5] p-2 rounded-full hover:bg-[#16f2b3] hover:scale-110 transition-all duration-300 text-gray-800 cursor-pointer"
-                size={36}
-              />
-              <span>{personalData.email}</span>
+
+      <div className="grid gap-6 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
+        <div className="grid gap-4">
+          {contactLinks.map((item) => {
+            const Icon = item.icon;
+
+            return (
+              <Link
+                key={item.label}
+                href={item.href}
+                target={item.label === "Location" ? "_blank" : undefined}
+                className="rounded-md border border-[#f7f3ea1f] bg-[#1a1815cc] p-5 transition-colors hover:border-[#32d6b366]"
+              >
+                <div className="flex items-center gap-4">
+                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-md bg-[#32d6b31a] text-[#32d6b3]">
+                    <Icon size={22} />
+                  </span>
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#d98f45]">
+                      {item.label}
+                    </p>
+                    <p className="mt-1 break-all text-base font-semibold text-[#f7f3ea]">
+                      {item.value}
+                    </p>
+                  </div>
+                </div>
+              </Link>
+            );
+          })}
+
+          <div className="rounded-md border border-[#f7f3ea1f] bg-[#1a1815cc] p-5">
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#d98f45]">
+              Social
             </p>
-            <p className="text-sm md:text-xl flex items-center gap-3">
-              <IoMdCall
-                className="bg-[#8b98a5] p-2 rounded-full hover:bg-[#16f2b3] hover:scale-110 transition-all duration-300 text-gray-800 cursor-pointer"
-                size={36}
-              />
-              <span>
-                {personalData.phone}
-              </span>
-            </p>
-            <p className="text-sm md:text-xl flex items-center gap-3">
-              <CiLocationOn
-                className="bg-[#8b98a5] p-2 rounded-full hover:bg-[#16f2b3] hover:scale-110 transition-all duration-300 text-gray-800 cursor-pointer"
-                size={36}
-              />
-              <span>
-                {personalData.address}
-              </span>
-            </p>
-          </div>
-          <div className="mt-8 lg:mt-16 flex items-center gap-5 lg:gap-10">
-            <Link target="_blank" href={personalData.github}>
-              <IoLogoGithub
-                className="bg-[#8b98a5] p-3 rounded-full hover:bg-[#16f2b3] hover:scale-110 transition-all duration-300 text-gray-800 cursor-pointer"
-                size={48}
-              />
-            </Link>
-            <Link target="_blank" href={personalData.linkedIn}>
-              <BiLogoLinkedin
-                className="bg-[#8b98a5] p-3 rounded-full hover:bg-[#16f2b3] hover:scale-110 transition-all duration-300 text-gray-800 cursor-pointer"
-                size={48}
-              />
-            </Link>
-            <Link target="_blank" href={personalData.twitter}>
-              <FaXTwitter
-                className="bg-[#8b98a5] p-3 rounded-full hover:bg-[#16f2b3] hover:scale-110 transition-all duration-300 text-gray-800 cursor-pointer"
-                size={48}
-              />
-            </Link>
-            <Link target="_blank" href={personalData.stackOverflow}>
-              <FaStackOverflow
-                className="bg-[#8b98a5] p-3 rounded-full hover:bg-[#16f2b3] hover:scale-110 transition-all duration-300 text-gray-800 cursor-pointer"
-                size={48}
-              />
-            </Link>
-            <Link target="_blank" href={personalData.facebook}>
-              <FaFacebook
-                className="bg-[#8b98a5] p-3 rounded-full hover:bg-[#16f2b3] hover:scale-110 transition-all duration-300 text-gray-800 cursor-pointer"
-                size={48}
-              />
-            </Link>
+            <div className="mt-4 flex flex-wrap gap-3">
+              {socials.map((item) => {
+                const Icon = item.icon;
+
+                return (
+                  <Link
+                    key={item.label}
+                    target="_blank"
+                    href={item.href}
+                    aria-label={item.label}
+                    className="rounded-md border border-[#f7f3ea1f] bg-[#11100f] p-3 text-[#f7f3ea] transition-colors hover:border-[#32d6b3] hover:text-[#32d6b3]"
+                  >
+                    <Icon size={22} />
+                  </Link>
+                );
+              })}
+            </div>
           </div>
         </div>
+
+        <ContactForm />
       </div>
-    </div>
+    </section>
   );
-};
+}
 
 export default ContactSection;

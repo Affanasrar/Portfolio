@@ -1,72 +1,48 @@
 // @flow strict
 
 import { skillsData } from "@/utils/data/skills";
-import { skillsImage } from "@/utils/skill-image";
-import Image from "next/image";
-import Marquee from "react-fast-marquee";
+import { FiCpu } from "react-icons/fi";
 
 function Skills() {
   return (
-    <div id="skills" className="relative z-50 border-t my-12 lg:my-24 border-[#25213b]">
-      <div className="w-[100px] h-[100px] bg-violet-100 rounded-full absolute top-6 left-[42%] translate-x-1/2 filter blur-3xl  opacity-20"></div>
-
-      <div className="flex justify-center -translate-y-[1px]">
-        <div className="w-3/4">
-          <div className="h-[1px] bg-gradient-to-r from-transparent via-violet-500 to-transparent  w-full" />
-        </div>
+    <section id="skills" className="scroll-mt-24 border-t border-[#f7f3ea1a] py-16 lg:py-24">
+      <div className="mb-10 max-w-3xl">
+        <p className="text-sm font-semibold uppercase tracking-[0.24em] text-[#d98f45]">
+          Skills
+        </p>
+        <h2 className="mt-3 text-3xl font-bold text-[#f7f3ea] sm:text-4xl">
+          A stack built around full-stack delivery and deployable systems.
+        </h2>
       </div>
 
-      <div className="flex justify-center my-5 lg:py-8">
-        <div className="flex  items-center">
-          <span className="w-24 h-[2px] bg-[#1a1443]"></span>
-          <span className="bg-[#1a1443] w-fit text-white p-2 px-5 text-xl rounded-md">
-            Skills
-          </span>
-          <span className="w-24 h-[2px] bg-[#1a1443]"></span>
-        </div>
-      </div>
-
-      <div className="w-full my-12">
-        <Marquee
-          gradient={false}
-          speed={80}
-          pauseOnHover={true}
-          pauseOnClick={true}
-          delay={0}
-          play={true}
-          direction="left"
-        >
-          {skillsData.map((skill, id) => (
-            <div className="w-36 min-w-fit h-fit flex flex-col items-center justify-center transition-all duration-500 m-3 sm:m-5 rounded-lg group relative hover:scale-[1.15] cursor-pointer"
-              key={id}>
-              <div className="h-full w-full rounded-lg border border-[#1f223c] bg-[#11152c] shadow-none shadow-gray-50 group-hover:border-violet-500 transition-all duration-500">
-                <div className="flex -translate-y-[1px] justify-center">
-                  <div className="w-3/4">
-                    <div className="h-[1px] w-full bg-gradient-to-r from-transparent via-violet-500 to-transparent" />
-                  </div>
-                </div>
-                <div className="flex flex-col items-center justify-center gap-3 p-6">
-                  <div className="h-8 sm:h-10">
-                    <Image
-                      src={skillsImage(skill)?.src}
-                      alt={skill}
-                      width={40}
-                      height={40}
-                      className="!h-full !w-auto rounded-lg"
-                      style={{ width: 'auto', height: 'auto' }}
-                    />
-                  </div>
-                  <p className="text-white text-sm sm:text-lg">
-                    {skill}
-                  </p>
-                </div>
-              </div>
+      <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+        {skillsData.map((group) => (
+          <article
+            key={group.title}
+            className="rounded-md border border-[#f7f3ea1f] bg-[#1a1815cc] p-6"
+          >
+            <div className="flex items-center gap-3">
+              <span className="flex h-10 w-10 items-center justify-center rounded-md bg-[#d98f451a] text-[#ffd29f]">
+                <FiCpu size={21} />
+              </span>
+              <h3 className="text-xl font-bold text-[#f7f3ea]">{group.title}</h3>
             </div>
-          ))}
-        </Marquee>
+
+            <div className="mt-5 flex flex-wrap gap-2">
+              {group.items.map((skill) => (
+                <span
+                  key={skill}
+                  className="rounded-md border border-[#f7f3ea1a] bg-[#11100f] px-3 py-2 text-sm text-[#d8d0c2]"
+                >
+                  {skill}
+                </span>
+              ))}
+            </div>
+          </article>
+        ))}
       </div>
-    </div>
+    </section>
   );
-};
+}
 
 export default Skills;

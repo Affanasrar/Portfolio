@@ -1,52 +1,62 @@
 export const projectsData = [
-    {
-        id: 1,
-        name: 'AI Powered Financial App',
-        description: "Me and my team built an AI-powered financial mobile application. I have developed API using Express, Typescript, OpenAI, AWS, and MongoDB. Used OTP via AWS SES, Google, and Facebook for the authentication system. Built AI assistants using OpenAI's latest model and trained using our dataset. Voice messages are converted to text using AWS Transcribe. The app fetches data from Google Sheets and generates a PDF term sheet, sent via AWS SES.",
-        tools: ['Express', 'MongoDB', 'OpenAI API', 'AWS SES', 'AWS S3', 'Node Mailer', 'Joi', 'Puppeteer', 'EC2', 'PM2', 'Nginx'],
-        role: 'Backend Developer',
-        code: '',
-        demo: '',
-    },
-    {
-        id: 2,
-        name: 'Travel Agency App',
-        description: 'I have designed and developed a full-stack web app for 2Expedition, a travel agency in Armenia. I created the UI using NextJS, Typescript, MUI, TailwindCSS, Google Maps, Sun-Editor, and React Slick. The app supports multiple languages and currencies. I developed the API using NestJS, Typescript, MySQL, TypeORM, AWS, and Nodemailer. I deployed the front-end app to AWS Amplify and the back-end app to AWS EC2.',
-        tools: ['NextJS', 'Tailwind CSS', "Google Maps", "NestJS", "TypeScript", "MySQL", "AWS S3", "Sun-Editor", "Gmail Passkey"],
-        role: 'Full Stack Developer',
-        code: '',
-        demo: '',
-    },
-    {
-        id: 3,
-        name: 'AI Powered Real Estate',
-        description: 'My team built an AI-based real estate app using Replicate API and OpenAI. We used Express, Typescript, OpenAI, Replicate, Stripe, and Mongoose to develop the API. We utilized NextJS, Formik, TailwindCSS, and other npm libraries for the UI. We have trained multiple AI assistants using the latest GPT model and integrated Replicate API for image processing. We added role-based auth, subscription plans, Cron job scheduling, and payment integration with Stripe.',
-        tools: ['React', 'Bootstrap', 'SCSS', 'Stripe', 'Express', 'TypeScript', 'MongoDB', 'Azure Blob', 'OpenAI API', 'Replicate AI', 'Cronjob', 'JWT'],
-        code: '',
-        role: 'Full Stack Developer',
-        demo: '',
-    },
-    {
-        id: 4,
-        name: 'Newsroom Management',
-        description: "My team and I developed a newspaper management dashboard application called Newsroom Management. As a front-end developer, I worked on creating the dashboard using NextJS, Material UI, Redux, Calendar, and other necessary npm libraries. We used React Redux to manage the application's state and React-hook-form and Sun Editor to handle forms.",
-        tools: ['NextJS', 'Material UI', 'Redux', 'Sun Editor', "Calendar"],
-        code: '',
-        demo: '',
-        role: 'Full Stack Developer',
-    }
+  {
+    id: 1,
+    name: "SHAMS Student Management System",
+    description:
+      "A coaching-institute management platform for student profiles, academic records, attendance, and operational dashboards. The project focuses on reducing manual record keeping and improving day-to-day data accuracy for administrators.",
+    tools: ["TypeScript", "React", "Dashboard UX", "Student Records", "Attendance"],
+    role: "Full Stack Developer",
+    code: "https://github.com/Affanasrar/shams-sms",
+    demo: "",
+  },
+  {
+    id: 2,
+    name: "SHU Carpool Web App",
+    description:
+      "A web-based ride-sharing platform that connects users traveling on similar routes. It includes ride listing, user interaction, and navigation flows built around the real-world problem of reducing travel cost and improving route efficiency.",
+    tools: ["JavaScript", "HTML", "CSS", "Ride Sharing", "Maps Flow"],
+    role: "Full Stack Developer",
+    code: "https://github.com/Affanasrar/SHU-Carpool-Web-app",
+    demo: "",
+  },
+  {
+    id: 3,
+    name: "Car Rental Web Application",
+    description:
+      "A full-stack booking system where users reserve vehicles by selecting pickup location, pickup date, return date, car class, and renter status. The app is structured around clean booking decisions and database-backed reservations.",
+    tools: ["Next.js", "TypeScript", "Prisma", "PostgreSQL", "Tailwind CSS"],
+    role: "Full Stack Developer",
+    code: "https://github.com/Affanasrar/car-rental-application",
+    demo: "",
+  },
+  {
+    id: 4,
+    name: "AWS ECS Commerce Microservices",
+    description:
+      "A cloud-native e-commerce microservices deployment with a Next.js frontend, API gateway, backend services for catalog, cart, orders, payments, and notifications, plus AWS ECS Fargate deployment documentation.",
+    tools: ["AWS ECS", "Docker", "Terraform", "RDS", "Redis", "GitHub Actions"],
+    role: "Cloud Developer",
+    code: "https://github.com/Affanasrar/ecs-commerce-demo",
+    demo: "",
+  },
+  {
+    id: 5,
+    name: "Coolify PaaS Deployment on AWS",
+    description:
+      "A cloud computing project that deploys Coolify as a self-hosted PaaS on AWS and runs a demo SaaS app through GitHub-based deployment, monitoring, storage, SSL, and alerting infrastructure.",
+    tools: ["AWS EC2", "Coolify", "RDS", "S3", "CloudWatch", "Docker"],
+    role: "Cloud Computing Student",
+    code: "https://github.com/Affanasrar/aws-coolify-paas-deployment",
+    demo: "",
+  },
+  {
+    id: 6,
+    name: "Toxic Comment Classification",
+    description:
+      "An NLP project using a fine-tuned transformer model to classify toxic comments. It reflects my interest in practical machine-learning workflows alongside full-stack and cloud development.",
+    tools: ["Python", "NLP", "Transformer Model", "Machine Learning"],
+    role: "ML Developer",
+    code: "https://github.com/Affanasrar/Toxic-Comment-Classification",
+    demo: "",
+  },
 ];
-
-
-// Do not remove any property.
-// Leave it blank instead as shown below
-
-// {
-//     id: 1,
-//     name: '',
-//     description: "",
-//     tools: [],
-//     role: '',
-//     code: '',
-//     demo: '',
-// },

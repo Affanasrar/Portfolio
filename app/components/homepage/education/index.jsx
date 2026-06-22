@@ -1,85 +1,46 @@
 // @flow strict
+
 import { educations } from "@/utils/data/educations";
-import Image from "next/image";
-import { BsPersonWorkspace } from "react-icons/bs";
-import lottieFile from '../../../assets/lottie/study.json';
-import AnimationLottie from "../../helper/animation-lottie";
-import GlowCard from "../../helper/glow-card";
+import { FiBookOpen, FiMapPin } from "react-icons/fi";
 
 function Education() {
   return (
-    <div id="education" className="relative z-50 border-t my-12 lg:my-24 border-[#25213b]">
-      <Image
-        src="/section.svg"
-        alt="Hero"
-        width={1572}
-        height={795}
-        className="absolute top-0 -z-10"
-        priority
-      />
-      <div className="flex justify-center -translate-y-[1px]">
-        <div className="w-3/4">
-          <div className="h-[1px] bg-gradient-to-r from-transparent via-violet-500 to-transparent  w-full" />
-        </div>
+    <section id="education" className="scroll-mt-24 border-t border-[#f7f3ea1a] py-16 lg:py-24">
+      <div className="mb-10 max-w-3xl">
+        <p className="text-sm font-semibold uppercase tracking-[0.24em] text-[#d98f45]">
+          Education
+        </p>
+        <h2 className="mt-3 text-3xl font-bold text-[#f7f3ea] sm:text-4xl">
+          Computer science foundation with a practical project track.
+        </h2>
       </div>
 
-      <div className="flex justify-center my-5 lg:py-8">
-        <div className="flex  items-center">
-          <span className="w-24 h-[2px] bg-[#1a1443]"></span>
-          <span className="bg-[#1a1443] w-fit text-white p-2 px-5 text-xl rounded-md">
-            Educations
-          </span>
-          <span className="w-24 h-[2px] bg-[#1a1443]"></span>
-        </div>
-      </div>
+      <div className="grid gap-4 lg:grid-cols-2">
+        {educations.map((education) => (
+          <article
+            key={education.id}
+            className="rounded-md border border-[#f7f3ea1f] bg-[#1a1815cc] p-6"
+          >
+            <div className="flex items-start gap-4">
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-md bg-[#d98f451a] text-[#ffd29f]">
+                <FiBookOpen size={24} />
+              </div>
 
-      <div className="py-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
-          <div className="flex justify-center items-start">
-            <div className="w-3/4 h-3/4">
-              <AnimationLottie animationPath={lottieFile} />
+              <div>
+                <p className="text-sm font-semibold text-[#d98f45]">{education.duration}</p>
+                <h3 className="mt-2 text-xl font-bold text-[#f7f3ea]">{education.title}</h3>
+                <p className="mt-1 text-base text-[#d8d0c2]">{education.institution}</p>
+                <p className="mt-3 flex items-center gap-2 text-sm text-[#b8b0a2]">
+                  <FiMapPin size={16} />
+                  {education.location}
+                </p>
+              </div>
             </div>
-          </div>
-
-          <div>
-            <div className="flex flex-col gap-6">
-              {
-                educations.map(education => (
-                  <GlowCard key={education.id} identifier={`education-${education.id}`}>
-                    <div className="p-3 relative text-white">
-                      <Image
-                        src="/blur-23.svg"
-                        alt="Hero"
-                        width={1080}
-                        height={200}
-                        className="absolute bottom-0 opacity-80"
-                      />
-                      <div className="flex justify-center">
-                        <p className="text-xs sm:text-sm text-[#16f2b3]">
-                          {education.duration}
-                        </p>
-                      </div>
-                      <div className="flex items-center gap-x-8 px-3 py-5">
-                        <div className="text-violet-500  transition-all duration-300 hover:scale-125">
-                          <BsPersonWorkspace size={36} />
-                        </div>
-                        <div>
-                          <p className="text-base sm:text-xl mb-2 font-medium uppercase">
-                            {education.title}
-                          </p>
-                          <p className="text-sm sm:text-base">{education.institution}</p>
-                        </div>
-                      </div>
-                    </div>
-                  </GlowCard>
-                ))
-              }
-            </div>
-          </div>
-        </div>
+          </article>
+        ))}
       </div>
-    </div>
+    </section>
   );
-};
+}
 
 export default Education;

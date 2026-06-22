@@ -1,83 +1,52 @@
 // @flow strict
 
 import { experiences } from "@/utils/data/experience";
-import Image from "next/image";
-import { BsPersonWorkspace } from "react-icons/bs";
-import experience from '../../../assets/lottie/code.json';
-import AnimationLottie from "../../helper/animation-lottie";
-import GlowCard from "../../helper/glow-card";
+import { FiBriefcase, FiMapPin } from "react-icons/fi";
 
 function Experience() {
   return (
-    <div id="experience" className="relative z-50 border-t my-12 lg:my-24 border-[#25213b]">
-      <Image
-        src="/section.svg"
-        alt="Hero"
-        width={1572}
-        height={795}
-        className="absolute top-0 -z-10"
-        priority
-      />
-
-      <div className="flex justify-center my-5 lg:py-8">
-        <div className="flex  items-center">
-          <span className="w-24 h-[2px] bg-[#1a1443]"></span>
-          <span className="bg-[#1a1443] w-fit text-white p-2 px-5 text-xl rounded-md">
-            Experiences
-          </span>
-          <span className="w-24 h-[2px] bg-[#1a1443]"></span>
+    <section id="experience" className="scroll-mt-24 border-t border-[#f7f3ea1a] py-16 lg:py-24">
+      <div className="mb-10 flex flex-col justify-between gap-4 md:flex-row md:items-end">
+        <div>
+          <p className="text-sm font-semibold uppercase tracking-[0.24em] text-[#d98f45]">
+            Experience
+          </p>
+          <h2 className="mt-3 text-3xl font-bold text-[#f7f3ea] sm:text-4xl">
+            Practical web work, teaching, and team development.
+          </h2>
         </div>
+        <p className="max-w-md text-sm leading-6 text-[#b8b0a2]">
+          Two current tracks define my growth: building production-minded web features and teaching the same fundamentals to others.
+        </p>
       </div>
 
-      <div className="py-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
-          <div className="flex justify-center items-start">
-            <div className="w-full h-full">
-              <AnimationLottie animationPath={experience} />
-            </div>
-          </div>
+      <div className="grid gap-4 lg:grid-cols-2">
+        {experiences.map((experience) => (
+          <article
+            key={experience.id}
+            className="rounded-md border border-[#f7f3ea1f] bg-[#1a1815cc] p-6"
+          >
+            <div className="flex items-start gap-4">
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-md bg-[#32d6b31a] text-[#32d6b3]">
+                <FiBriefcase size={24} />
+              </div>
 
-          <div>
-            <div className="flex flex-col gap-6">
-              {
-                experiences.map(experience => (
-                  <GlowCard key={experience.id} identifier={`experience-${experience.id}`}>
-                    <div className="p-3 relative">
-                      <Image
-                        src="/blur-23.svg"
-                        alt="Hero"
-                        width={1080}
-                        height={200}
-                        className="absolute bottom-0 opacity-80"
-                      />
-                      <div className="flex justify-center">
-                        <p className="text-xs sm:text-sm text-[#16f2b3]">
-                          {experience.duration}
-                        </p>
-                      </div>
-                      <div className="flex items-center gap-x-8 px-3 py-5">
-                        <div className="text-violet-500  transition-all duration-300 hover:scale-125">
-                          <BsPersonWorkspace size={36} />
-                        </div>
-                        <div>
-                          <p className="text-base sm:text-xl mb-2 font-medium uppercase">
-                            {experience.title}
-                          </p>
-                          <p className="text-sm sm:text-base">
-                            {experience.company}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </GlowCard>
-                ))
-              }
+              <div>
+                <p className="text-sm font-semibold text-[#d98f45]">{experience.duration}</p>
+                <h3 className="mt-2 text-xl font-bold text-[#f7f3ea]">{experience.title}</h3>
+                <p className="mt-1 text-base text-[#d8d0c2]">{experience.company}</p>
+                <p className="mt-3 flex items-center gap-2 text-sm text-[#b8b0a2]">
+                  <FiMapPin size={16} />
+                  {experience.location}
+                </p>
+                <p className="mt-4 text-sm leading-7 text-[#b8b0a2]">{experience.description}</p>
+              </div>
             </div>
-          </div>
-        </div>
+          </article>
+        ))}
       </div>
-    </div>
+    </section>
   );
-};
+}
 
 export default Experience;

@@ -5,14 +5,13 @@ import "react-toastify/dist/ReactToastify.css";
 import Footer from "./components/footer";
 import ScrollToTop from "./components/helper/scroll-to-top";
 import Navbar from "./components/navbar";
-import "./css/card.scss";
 import "./css/globals.scss";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Portfolio of Abu Said - Software Developer",
+  title: "Affan Ahmed | Full Stack Developer",
   description:
-    "This is the portfolio of Abu Said. I am a full stack developer and a self taught developer. I love to learn new things and I am always open to collaborating with others. I am a quick learner and I am always looking for new challenges.",
+    "Portfolio of Affan Ahmed, an aspiring full stack developer and cloud computing enthusiast from Karachi, Pakistan.",
 };
 
 export default function RootLayout({ children }) {
@@ -20,7 +19,7 @@ export default function RootLayout({ children }) {
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className} suppressHydrationWarning>
         <ToastContainer />
-        <main className="min-h-screen relative mx-auto px-6 sm:px-12 lg:max-w-[70rem] xl:max-w-[76rem] 2xl:max-w-[92rem] text-white">
+        <main className="min-h-screen relative mx-auto px-5 sm:px-8 lg:max-w-[72rem] xl:max-w-[80rem] 2xl:max-w-[92rem] text-[#f7f3ea]">
           <Navbar />
           {children}
           <ScrollToTop />

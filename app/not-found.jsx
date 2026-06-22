@@ -2,20 +2,24 @@
 
 import Link from "next/link";
 
-function page() {
+function NotFoundPage() {
   return (
-    <div className="flex flex-col items-center justify-center h-screen text-center">
-      <h1 className="text-6xl font-bold text-gray-800 dark:text-gray-100">404</h1>
-      <p className="mt-4 text-lg text-gray-600 dark:text-gray-300">Page Not Found</p>
-      <p className="mt-2 text-gray-500 dark:text-gray-400">Sorry, the page you are looking for does not exist.</p>
-      <Link className="mt-5 flex items-center gap-1 hover:gap-3 rounded-full bg-gradient-to-r from-pink-500 to-violet-600 px-3 md:px-8 py-3 text-center text-xs md:text-sm font-medium uppercase tracking-wider text-white no-underline transition-all duration-200 ease-out hover:text-white hover:no-underline md:font-semibold"
-        role="button" 
+    <section className="flex min-h-[70vh] flex-col items-center justify-center text-center">
+      <p className="text-sm font-semibold uppercase tracking-[0.24em] text-[#d98f45]">
+        404
+      </p>
+      <h1 className="mt-3 text-4xl font-bold text-[#f7f3ea] sm:text-5xl">Page not found</h1>
+      <p className="mt-4 max-w-md text-[#b8b0a2]">
+        This page is not part of Affan&apos;s portfolio yet.
+      </p>
+      <Link
+        className="mt-8 rounded-md bg-[#32d6b3] px-5 py-3 font-semibold text-[#10100f] transition-transform hover:-translate-y-0.5"
         href="/"
       >
-        Go to Home
+        Go Home
       </Link>
-    </div>
+    </section>
   );
-};
+}
 
-export default page;
+export default NotFoundPage;
