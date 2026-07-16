@@ -15,5 +15,5 @@ export const personalData = {
   linkedIn: "https://www.linkedin.com/in/affan-ahmed809",
   twitter: "https://twitter.com/affanahmed_LYA",
   devUsername: "",
-  resume: "/Affan_Ahmed_CV.pdf",
+  resume: "/Affan%20Ahmed%20CV.pdf",
 };
