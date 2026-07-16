@@ -42,7 +42,7 @@ function Navbar() {
             className="ml-1 inline-flex items-center gap-2 rounded-md bg-[#32d6b3] px-3 py-2 font-semibold text-[#10100f] transition-transform hover:-translate-y-0.5"
           >
             <MdDownload size={18} />
-            CV
+            Resume
           </Link>
         </div>
       </div>

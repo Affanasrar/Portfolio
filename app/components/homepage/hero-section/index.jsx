@@ -6,7 +6,10 @@ import Link from "next/link";
 import { BsGithub, BsLinkedin } from "react-icons/bs";
 import { FaInstagram } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
+import { FiCalendar } from "react-icons/fi";
 import { MdDownload, MdOutlineMail } from "react-icons/md";
+
+const stack = ["Next.js", "React", "Node.js", "AWS"];
 
 const highlights = [
   { label: "Current focus", value: "Full-stack web apps" },
@@ -20,28 +23,39 @@ function HeroSection() {
       <div className="grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
         <div className="max-w-3xl">
           <p className="mb-4 inline-flex rounded-md border border-[#32d6b34d] bg-[#32d6b312] px-3 py-2 text-sm font-medium text-[#32d6b3]">
-            Undergraduate CS Student | Full-Stack Developer | Instructor
+            Hi, I&apos;m Affan Ahmed
           </p>
 
           <h1 className="text-5xl font-black leading-[1.02] text-[#f7f3ea] sm:text-6xl lg:text-7xl">
-            Affan Ahmed
+            Full Stack Developer
           </h1>
 
           <p className="mt-5 max-w-2xl text-xl leading-8 text-[#d8d0c2] sm:text-2xl">
-            {personalData.headline}
+            Next.js · React · Node.js · AWS
           </p>
 
           <p className="mt-5 max-w-2xl text-base leading-8 text-[#b8b0a2] sm:text-lg">
-            I build responsive interfaces, practical dashboards, database-backed systems, and cloud deployment projects while sharpening my craft through teaching and internships.
+            I build recruiter-ready products: SaaS apps, admin panels, dashboards, REST APIs, and cloud deployments that are designed to ship and scale.
           </p>
+
+          <div className="mt-7 flex flex-wrap gap-2">
+            {stack.map((item) => (
+              <span
+                key={item}
+                className="rounded-full border border-[#f7f3ea1f] bg-[#1a1815cc] px-4 py-2 text-sm font-semibold text-[#f7f3ea]"
+              >
+                {item}
+              </span>
+            ))}
+          </div>
 
           <div className="mt-8 flex flex-wrap items-center gap-3">
             <Link
               href="#contact"
               className="inline-flex items-center gap-2 rounded-md bg-[#32d6b3] px-5 py-3 font-semibold text-[#10100f] transition-transform hover:-translate-y-0.5"
             >
-              <MdOutlineMail size={20} />
-              Contact Me
+              <FiCalendar size={20} />
+              Hire Me
             </Link>
 
             <Link
@@ -50,7 +64,23 @@ function HeroSection() {
               className="inline-flex items-center gap-2 rounded-md border border-[#f7f3ea26] bg-[#1a1815] px-5 py-3 font-semibold text-[#f7f3ea] transition-colors hover:border-[#d98f45] hover:text-[#ffd29f]"
             >
               <MdDownload size={20} />
-              Download CV
+              Resume
+            </Link>
+
+            <Link
+              href={`mailto:${personalData.email}`}
+              className="inline-flex items-center gap-2 rounded-md border border-[#f7f3ea26] bg-[#1a1815] px-5 py-3 font-semibold text-[#f7f3ea] transition-colors hover:border-[#32d6b3] hover:text-[#32d6b3]"
+            >
+              <MdOutlineMail size={20} />
+              Email Me
+            </Link>
+
+            <Link
+              href="#contact"
+              className="inline-flex items-center gap-2 rounded-md border border-[#f7f3ea26] bg-[#1a1815] px-5 py-3 font-semibold text-[#f7f3ea] transition-colors hover:border-[#32d6b3] hover:text-[#32d6b3]"
+            >
+              <FiCalendar size={20} />
+              Book Interview
             </Link>
           </div>
 
@@ -59,9 +89,10 @@ function HeroSection() {
               href={personalData.github}
               target="_blank"
               aria-label="GitHub profile"
-              className="rounded-md border border-[#f7f3ea1f] bg-[#1a1815] p-3 text-[#f7f3ea] transition-colors hover:border-[#32d6b3] hover:text-[#32d6b3]"
+              className="inline-flex items-center gap-2 rounded-md border border-[#f7f3ea1f] bg-[#1a1815] px-4 py-3 font-semibold text-[#f7f3ea] transition-colors hover:border-[#32d6b3] hover:text-[#32d6b3]"
             >
               <BsGithub size={21} />
+              GitHub
             </Link>
             <Link
               href={personalData.linkedIn}

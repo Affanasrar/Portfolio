@@ -10,11 +10,11 @@ const Projects = () => {
             Projects
           </p>
           <h2 className="mt-3 text-3xl font-bold text-[#f7f3ea] sm:text-4xl">
-            Selected builds from web, cloud, and machine learning.
+            Selected builds with screenshots, problem statements, and delivery details.
           </h2>
         </div>
         <p className="max-w-md text-sm leading-6 text-[#b8b0a2]">
-          These projects are pulled from my CV and public GitHub profile, with emphasis on real systems and deployment practice.
+          Each project highlights the stack, the problem solved, and the architecture behind it so recruiters can skim quickly.
         </p>
       </div>
 
